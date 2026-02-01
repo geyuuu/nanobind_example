@@ -1,1 +1,1 @@
-from .nanobind_example_ext import add, __doc__
+from ._nanobind_example_impl import add, __doc__

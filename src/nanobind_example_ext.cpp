@@ -1,10 +1,7 @@
 #include <nanobind/nanobind.h>
 
-namespace nb = nanobind;
+int add(int a, int b) { return a + b +1000; }
 
-using namespace nb::literals;
-
-NB_MODULE(nanobind_example_ext, m) {
-    m.doc() = "This is a \"hello world\" example with nanobind";
-    m.def("add", [](int a, int b) { return a + b; }, "a"_a, "b"_a);
+NB_MODULE(_nanobind_example_impl, m) {
+    m.def("add", &add);
 }

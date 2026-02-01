@@ -7,3 +7,6 @@ build
 *.egg-info
 .vscode
 .vs
+py.typed
+src/nanobind_example/__init__.py
+src/nanobind_example/__init__.pyi
