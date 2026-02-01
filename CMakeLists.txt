@@ -86,5 +86,18 @@ nanobind_add_module(
   src/nanobind_example_ext.cpp
 )
 
+nanobind_add_stub(
+  nanobind_example_stub
+  MODULE _nanobind_example_impl
+  OUTPUT _nanobind_example_impl.pyi
+  PYTHON_PATH $<TARGET_FILE_DIR:_nanobind_example_impl>
+  DEPENDS _nanobind_example_impl
+  MARKER_FILE py.typed
+)
+
+
+install(TARGETS _nanobind_example_impl LIBRARY DESTINATION nanobind_example)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/py.typed ${CMAKE_CURRENT_BINARY_DIR}/_nanobind_example_impl.pyi DESTINATION nanobind_example)
+
 # Install directive for scikit-build-core
 install(TARGETS _nanobind_example_impl LIBRARY DESTINATION nanobind_example)
