@@ -95,9 +95,6 @@ nanobind_add_stub(
   MARKER_FILE py.typed
 )
 
-
-install(TARGETS _nanobind_example_impl LIBRARY DESTINATION nanobind_example)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/py.typed ${CMAKE_CURRENT_BINARY_DIR}/_nanobind_example_impl.pyi DESTINATION nanobind_example)
-
 # Install directive for scikit-build-core
 install(TARGETS _nanobind_example_impl LIBRARY DESTINATION nanobind_example)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/py.typed ${CMAKE_CURRENT_BINARY_DIR}/_nanobind_example_impl.pyi DESTINATION nanobind_example)
