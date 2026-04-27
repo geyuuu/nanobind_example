@@ -47,8 +47,8 @@ execute_process(
   OUTPUT_STRIP_TRAILING_WHITESPACE OUTPUT_VARIABLE nanobind_ROOT)
 find_package(nanobind CONFIG REQUIRED)
 
-find_package(CUDAToolkit REQUIRED)
-find_package(Torch REQUIRED)
+# find_package(CUDAToolkit REQUIRED)
+# find_package(Torch REQUIRED)
 
 # An example of using CPM to manage dependencies
 # Uncomment the following lines to enable CPM and add stdexec as a dependency.
@@ -97,4 +97,3 @@ nanobind_add_stub(
 
 # Install directive for scikit-build-core
 install(TARGETS _nanobind_example_impl LIBRARY DESTINATION nanobind_example)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/py.typed ${CMAKE_CURRENT_BINARY_DIR}/_nanobind_example_impl.pyi DESTINATION nanobind_example)
