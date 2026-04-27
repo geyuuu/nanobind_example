@@ -86,14 +86,23 @@ nanobind_add_module(
   src/nanobind_example_ext.cpp
 )
 
+# Emit the stub + py.typed directly into the source package so editable
+# installs (scikit-build-core puts src/ on sys.path) see them next to
+# __init__.py without an extra import-hook lookup.
 nanobind_add_stub(
   nanobind_example_stub
   MODULE _nanobind_example_impl
-  OUTPUT _nanobind_example_impl.pyi
+  OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/src/nanobind_example/_nanobind_example_impl.pyi
   PYTHON_PATH $<TARGET_FILE_DIR:_nanobind_example_impl>
   DEPENDS _nanobind_example_impl
-  MARKER_FILE py.typed
+  MARKER_FILE ${CMAKE_CURRENT_SOURCE_DIR}/src/nanobind_example/py.typed
 )
 
-# Install directive for scikit-build-core
+# Install for scikit-build-core. The .pyi/py.typed are also installed here
+# because wheel.packages does not bundle non-.py files by default.
 install(TARGETS _nanobind_example_impl LIBRARY DESTINATION nanobind_example)
+install(FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/nanobind_example/_nanobind_example_impl.pyi
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/nanobind_example/py.typed
+  DESTINATION nanobind_example
+)

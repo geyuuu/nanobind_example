@@ -8,5 +8,4 @@ build
 .vscode
 .vs
 py.typed
-src/nanobind_example/__init__.py
-src/nanobind_example/__init__.pyi
+src/nanobind_example/_nanobind_example_impl.pyi
